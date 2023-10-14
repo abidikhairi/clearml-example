@@ -1,7 +1,7 @@
 import logging
 
 
-def get_default_logger(name: str, log_file: str) -> logging.Logger:
+def get_default_logger(name: str, log_file: str = None) -> logging.Logger:
     """create a Logger object
 
     Args:
@@ -12,7 +12,6 @@ def get_default_logger(name: str, log_file: str) -> logging.Logger:
         logging.Logger
     """
     logger = logging.getLogger(name)
-
     logging.basicConfig(
         filename=log_file,
         level=logging.DEBUG,

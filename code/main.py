@@ -1,8 +1,10 @@
+import clearml
 import torch as th
 from torch.utils.data import DataLoader
 from torchvision import transforms as T 
 from torchvision import datasets
 from torchmetrics import Accuracy
+from clearml import Task
 
 from models.linear import LinearMNISTModel
 from utils.cli_parser import get_default_parser
@@ -10,7 +12,9 @@ from utils.logging import get_default_logger
 
 
 def main(args):
-    logger = get_default_logger(__name__, 'logs/main.log')
+    task = Task.init(project_name='toy_examples', task_name='mnist experiment')
+
+    logger = get_default_logger(__name__)
     
     transform = T.Compose([
         T.ToTensor(),
